@@ -1,0 +1,220 @@
+{
+    "anims": [
+        {
+            "key": "idle-up",
+            "type": "frame",
+            "frames": [{
+                "key": "player",
+                "frame": "0"
+            },
+            {
+                "key": "player",
+                "frame": "1"
+            }],
+            "frameRate": 2,
+            "repeat": -1,
+            "yoyo": true
+        },
+        {
+            "key": "idle-left",
+            "type": "frame",
+            "frames": [{
+                "key": "player",
+                "frame": "13"
+            },
+            {
+                "key": "player",
+                "frame": "14"
+            }],
+            "frameRate": 2,
+            "repeat": -1,
+            "yoyo": true
+        },
+        {
+            "key": "idle-down",
+            "type": "frame",
+            "frames": [{
+                "key": "player",
+                "frame": "26"
+            },
+            {
+                "key": "player",
+                "frame": "27"
+            }],
+            "frameRate": 2,
+            "repeat": -1,
+            "yoyo": true
+        },
+        {
+            "key": "idle-right",
+            "type": "frame",
+            "frames": [{
+                "key": "player",
+                "frame": "39"
+            },
+            {
+                "key": "player",
+                "frame": "40"
+            }],
+            "frameRate": 2,
+            "repeat": -1,
+            "yoyo": true
+        },
+        {
+            "key": "walk-up",
+            "type": "frame",
+            "frames": [
+            {
+                "key": "player",
+                "frame": "105"
+            },
+            {
+                "key": "player",
+                "frame": "106"
+            },
+            {
+                "key": "player",
+                "frame": "107"
+            },
+            {
+                "key": "player",
+                "frame": "108"
+            },
+            {
+                "key": "player",
+                "frame": "109"
+            },
+            {
+                "key": "player",
+                "frame": "110"
+            },
+            {
+                "key": "player",
+                "frame": "111"
+            },
+            {
+                "key": "player",
+                "frame": "112"
+            }],
+            "frameRate": 12,
+            "repeat": -1
+        },
+        {
+            "key": "walk-left",
+            "type": "frame",
+            "frames": [
+            {
+                "key": "player",
+                "frame": "118"
+            },
+            {
+                "key": "player",
+                "frame": "119"
+            },
+            {
+                "key": "player",
+                "frame": "120"
+            },
+            {
+                "key": "player",
+                "frame": "121"
+            },
+            {
+                "key": "player",
+                "frame": "122"
+            },
+            {
+                "key": "player",
+                "frame": "123"
+            },
+            {
+                "key": "player",
+                "frame": "124"
+            },
+            {
+                "key": "player",
+                "frame": "125"
+            }],
+            "frameRate": 12,
+            "repeat": -1
+        },
+        {
+            "key": "walk-down",
+            "type": "frame",
+            "frames": [
+            {
+                "key": "player",
+                "frame": "131"
+            },
+            {
+                "key": "player",
+                "frame": "132"
+            },
+            {
+                "key": "player",
+                "frame": "133"
+            },
+            {
+                "key": "player",
+                "frame": "134"
+            },
+            {
+                "key": "player",
+                "frame": "135"
+            },
+            {
+                "key": "player",
+                "frame": "136"
+            },
+            {
+                "key": "player",
+                "frame": "137"
+            },
+            {
+                "key": "player",
+                "frame": "138"
+            }],
+            "frameRate": 12,
+            "repeat": -1
+        },
+        {
+            "key": "walk-right",
+            "type": "frame",
+            "frames": [
+            {
+                "key": "player",
+                "frame": "144"
+            },
+            {
+                "key": "player",
+                "frame": "145"
+            },
+            {
+                "key": "player",
+                "frame": "146"
+            },
+            {
+                "key": "player",
+                "frame": "147"
+            },
+            {
+                "key": "player",
+                "frame": "148"
+            },
+            {
+                "key": "player",
+                "frame": "149"
+            },
+            {
+                "key": "player",
+                "frame": "150"
+            },
+            {
+                "key": "player",
+                "frame": "151"
+            }],
+            "frameRate": 12,
+            "repeat": -1
+        }
+    ]
+}
