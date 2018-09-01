@@ -47,6 +47,25 @@
             ],
             "endGameOption" : 1,
             "endGameStory" : "For some reason, you decide to tell the dodgy Accountant about your secret, he's gonna treat you with more respect now that you are rich....you agree that you will see him tomorrow and take him to the cave....\n\nnighttime, the Accountant goes to visit Magister asking for some poison, he wants to kill you and have all the gold for himself, Magister is a bit reluctant but the Accountant manages to convince him that he needs the poison to get rid of some weeds in his garden.....\n\nthe Accountant sneaks into your place just before dawn and poisons your milk, he's good with numbers but he's not very clever after all........ten minutes after breakfast you collapse......surprisingly you wake up after a couple of hours, the poison didn't kill you but you've lost your memory and you haven't revealed the actual cave's location to anybody!\n\nYou go back to your normal life whilst the Accountant is gonna spend the next couple of months into the forest searching for the cave...."
+        },
+        {
+            "id" : "kim",
+            "script" : [
+                ["Stefano","Hello Kim, how are you my lovely?"],
+                ["Kim","I am good but I missed you so much......what have you been up to?"],
+                ["Stefano","I went into the for.....erm......I was with Magister practising alchemy...."],
+                ["Kim","oh I see, well why don't we practice or vows instead?"],
+                ["Stefano", "vows?"],
+                ["Kim","Yes, Stefano.....the VOWS.....you know when people get married and so on and so forth......"],
+                ["Stefano","sure, one day I will be ready for that......but there's somthing more urgent I should tell you:"]
+            ],
+            "options" : [
+                [1,"there's a secret treasure in the forest and I need your help to get it"],
+                [2,"\"e\" equals 2.718281828459045"],
+                [3, "ADVERTISING: francescopirrone.co.uk can compose bespoke music for cheap!!!"]
+            ],
+            "endGameOption" : 1,
+            "endGameStory" : "You decided to share your secret with Kim, they are willing to help you only if you agree to get married as soon as possible....\n\n...\n\n...\n\nfair enough, you have to do what you have to do in the end......\n\nyou and Kim dig out all the gold, spend half for the marriage, put the rest in the bank and pay 33% taxes on it, the remainder is still enough to finance your research, on a smaller scale but you can't have your gold tax free can you?"
         }
     ]
 }

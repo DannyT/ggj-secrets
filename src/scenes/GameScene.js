@@ -23,13 +23,13 @@ class GameScene extends Phaser.Scene {
         // map
         var map = this.make.tilemap({ key: 'map' });
         var tilesetTerrain = map.addTilesetImage('terrain-assets-extruded','terrain');
-        var tilesetBuildings = map.addTilesetImage('base-assets-extruded','buildings');
+        var tilesetBuildings = map.addTilesetImage('town-combined-extruded','town');
         var belowLayer = map.createStaticLayer('Below Player', tilesetTerrain, 0, 0);
         var belowLayerDecor = map.createStaticLayer('Below Player Decoration', tilesetTerrain, 0, 0);
         var worldLayer = map.createStaticLayer('World', tilesetBuildings, 0, 0);
         worldLayer.setCollisionByProperty({ collides: true });
-        // var aboveLayer = map.createStaticLayer('Above Player', tileset, 0, 0);
-        // aboveLayer.setDepth(10);
+        var aboveLayer = map.createStaticLayer('Above Player', tilesetBuildings, 0, 0);
+        aboveLayer.setDepth(10);
         var objectLayer = map.getObjectLayer('Objects');
 
         // create animations from data
@@ -41,6 +41,8 @@ class GameScene extends Phaser.Scene {
         this.anims.fromJSON(data);
         data = this.cache.json.get('accountant-anims');
         this.anims.fromJSON(data);
+        data = this.cache.json.get('kim-anims');
+        this.anims.fromJSON(data);
         this.idleState = 'idle-down';
 
         // set up keyboard input
@@ -51,7 +53,6 @@ class GameScene extends Phaser.Scene {
             left: Phaser.Input.Keyboard.KeyCodes.A,
             right: Phaser.Input.Keyboard.KeyCodes.D
         });
-        this.input.keyboard.once('keydown', this.hideIntro, this);
         this.input.keyboard.on('keydown_SPACE', this.interact, this);
         
         // set up mouse/touch input
@@ -65,7 +66,7 @@ class GameScene extends Phaser.Scene {
 
         // npcs
         this.npcGroup = this.physics.add.staticGroup({
-            key: ['magister','landlord','accountant'],
+            key: ['magister','landlord','accountant', 'kim'],
             immovable: true
         });
         var children = this.npcGroup.getChildren();
@@ -101,8 +102,6 @@ class GameScene extends Phaser.Scene {
 
         this.physics.add.collider(this.player, this.npcGroup);
         this.physics.add.collider(this.player, worldLayer);
-
-        this.input.once('pointerup', this.hideIntro, this);
     }
 
     update(time, delta) {
@@ -168,10 +167,6 @@ class GameScene extends Phaser.Scene {
         } else {
             this.playerInteractIcon.setVisible(false);
         }
-    }
-    
-    hideIntro() {
-        this.events.emit('hideintro');
     }
 
     interact() {

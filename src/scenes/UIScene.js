@@ -72,6 +72,7 @@ class UIScene extends Phaser.Scene {
         });
 
         this.input.keyboard.once('keydown', this.hideIntro, this);
+        this.input.once('pointerup', this.hideIntro, this);
 
         // intro music
         this.music = this.sound.add('intro');
@@ -92,16 +93,16 @@ class UIScene extends Phaser.Scene {
         this.music.stop();
         switch(this.storyline){
             case 'magister':
-                console.log('magister end');
                 this.music = this.sound.add('magister-end');
                 break;
             case 'landlord':
-                console.log('landlord end');    
                 this.music = this.sound.add('landlord-end');
                 break;
             case 'accountant':
-                console.log('accountant end');
                 this.music = this.sound.add('accountant-end');
+                break;
+            case 'kim':
+                this.music = this.sound.add('kim-end');
                 break;
         }
         this.music.play();
