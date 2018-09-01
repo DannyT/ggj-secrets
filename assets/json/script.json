@@ -4,30 +4,49 @@
         {
             "id" : "magister",
             "script" : [
-                ["player", "Hello Magister, how are you?"],
-                ["magister", "I am good, just started writing a book about alchemy, I want to make my knowledge available for the future generations....you know.....how about you? You are still obsessed with your dream of turning things into gold, aren't you?"],
-                ["player", "you bet it!......I wanted to ask you? What would you do if you had a ridiculous amount of gold at your disposal?"],
-                ["magister", "mmmm....that's a good question...I am quite happy about my life and I don't care much about material possessions, I would help my friends first and then I would open an alchemy school in the village."],
-                ["player", "Oh, I see....your intentions are noble and you are a very good person."]
-            ]
+                ["Stefano", "Hello Magister, how are you?"],
+                ["Magister", "I am good, just started writing a book about alchemy, I want to make my knowledge available for the future generations....you know.....how about you? You are still obsessed with your dream of turning things into gold, aren't you?"],
+                ["Stefano", "you bet it!......I wanted to ask you? What would you do if you had a ridiculous amount of gold at your disposal?"],
+                ["Magister", "mmmm....that's a good question...I am quite happy about my life and I don't care much about material possessions, I would help my friends first and then I would open an alchemy school in the village."],
+                ["Stefano", "Oh, I see....your intentions are noble and you are a very good person."]
+            ],
+            "options" : [
+                [1, "tell Magister about the secret"],
+                [2, "....maybe another day...."]
+            ],
+            "endGameOption" : 1,
+            "endGameStory" : "You have decided to tell Magister about your secret, he is a wise man after all and he's been your mentor for ages....you know you can trust him\n\nMagister and you go to the cave to try and dig out the gold....\n\nunfortunately certain people change very quickly when they see too much gold all at once......at the sight of gold, Magister realizes that he wants it for himself, he wants to become the best alchemist in the world, create the elixir of life and rule the world until the 18th century, when Antoine Lavoisier eventually demostrated that alchemy is rubbish.....\n\nas it is the Alchemist stabs you and leave you in the cave, no one is gonna find you there.....he steals the gold and runs away....."
         },
         {
             "id" : "landlord",
             "script" : [
-                ["player", "Good morning boss, how are you?"],
-                ["landlord", "I can't complain, Stefano, I have just received a supply of the finest ale in the county, I bet it's gonna be a success this weekend, our customers are gonna love it!"],
-                ["player", "Sounds great! Oh....with regard to this weekend, I might not be able to work because I found.....erm....I feel rough to be honest.....I shall let you know tomorrow whether I am feeling better or not, is that okay?"],
-                ["landlord", "Well....that's not great, I should ideally know in advance so that I can find some cover? Shall I find you a replacement for this weekend? It's gonna be easier if you can tell me now, Stefano......"]
-            ]
+                ["Stefano", "Good morning boss, how are you?"],
+                ["Landlord", "I can't complain, Stefano, I have just received a supply of the finest ale in the county, I bet it's gonna be a success this weekend, our customers are gonna love it!"],
+                ["Stefano", "Sounds great! Oh....with regard to this weekend, I might not be able to work because I found.....erm....I feel rough to be honest.....I shall let you know tomorrow whether I am feeling better or not, is that okay?"],
+                ["Landlord", "Well....that's not great, I should ideally know in advance so that I can find some cover? Shall I find you a replacement for this weekend? It's gonna be easier if you can tell me now, Stefano......"]
+            ],
+            "options" : [
+                [1, "Tell the Landlord about your secret"],
+                [2, "Say that you are gonna be working this weekend"],
+                [3, "Tell the Landlord that you are quitting the job"]
+            ],
+            "endGameOption" : 1,
+            "endGameStory" : "You tell the Landlord about your secret, he can be abrupt at times but he's a good guy, he is honest and he works really hard......\n\nyou then decide to trust him, take him to the cave and show him the gold....\n\nYOU HAVE MADE THE RIGHT DECISION!\n\nThe Landlord comes up with a strategy to extract the gold, there's enough to make you both rich forever, you could actually retire today!\n\nThe Landlord always wanted to make his own ale and now he can fund the best brewery ever, people will come from anywhere in the region to try his beer!\n\nYou can finally focus full time into your research and spend your life trying to turn things into gold, you are not gonna make it, ultimately we all know that you can't change an element into another, come on.....but at least you can leave the dream!"
         },
         {
             "id" : "accountant",
             "script" : [
-                ["player", "Hello Sir, is it possible to check how I have done this quarter, please?"],
-                ["accountant", "Sure thing, Stefano, that's no trouble......let me see...."],
-                ["accountant", "...shuffle, shuffle, shuffle..."],
-                ["accountant", "Here we are: you are doing 0K at the minute.....your weekend job is providing a stable income but you maybe spent too much on alchemy books and equipment. You would need someone to invest on your research, if you want to take it to the next level.....it probably needs an external \"boost\", if you see what I mean? Well....unless you can find a gold mine instead......AHAHAHAH"]
-            ]
+                ["Stefano", "Hello Sir, is it possible to check how I have done this quarter, please?"],
+                ["Accountant", "Sure thing, Stefano, that's no trouble......let me see...."],
+                ["Accountant", "...shuffle, shuffle, shuffle..."],
+                ["Accountant", "Here we are: you are doing 0K at the minute.....your weekend job is providing a stable income but you maybe spent too much on alchemy books and equipment. You would need someone to invest on your research, if you want to take it to the next level.....it probably needs an external \"boost\", if you see what I mean? Well....unless you can find a gold mine instead......AHAHAHAH"]
+            ],
+            "options" : [
+                [1, "reveal secret to the Accountant"],
+                [2, "say goodbye"]
+            ],
+            "endGameOption" : 1,
+            "endGameStory" : "For some reason, you decide to tell the dodgy Accountant about your secret, he's gonna treat you with more respect now that you are rich....you agree that you will see him tomorrow and take him to the cave....\n\nnighttime, the Accountant goes to visit Magister asking for some poison, he wants to kill you and have all the gold for himself, Magister is a bit reluctant but the Accountant manages to convince him that he needs the poison to get rid of some weeds in his garden.....\n\nthe Accountant sneaks into your place just before dawn and poisons your milk, he's good with numbers but he's not very clever after all........ten minutes after breakfast you collapse......surprisingly you wake up after a couple of hours, the poison didn't kill you but you've lost your memory and you haven't revealed the actual cave's location to anybody!\n\nYou go back to your normal life whilst the Accountant is gonna spend the next couple of months into the forest searching for the cave...."
         }
     ]
 }

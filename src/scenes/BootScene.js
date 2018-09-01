@@ -37,6 +37,15 @@ class BootScene extends Phaser.Scene {
       this.load.audio('village', [
         'assets/audio/Village_1.0.mp3'
       ]);
+      this.load.audio('magister-end', [
+        'assets/audio/Magister_Ending_1.0.mp3'
+      ]);
+      this.load.audio('landlord-end', [
+        'assets/audio/Landlord_Ending_1.0.mp3'
+      ]);
+      this.load.audio('accountant-end', [
+        'assets/audio/Accountant_Ending_1.0.mp3'
+      ]);
 
       // animation spritesheet (create at http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/)
       this.load.spritesheet('player', 'assets/images/character.png', { frameWidth: 64, frameHeight: 64 });

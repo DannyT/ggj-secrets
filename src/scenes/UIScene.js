@@ -71,6 +71,8 @@ class UIScene extends Phaser.Scene {
             visible:false
         });
 
+        this.input.keyboard.once('keydown', this.hideIntro, this);
+
         // intro music
         this.music = this.sound.add('intro');
         this.music.play();
@@ -78,10 +80,32 @@ class UIScene extends Phaser.Scene {
         //  Grab a reference to the Game Scene
         this.game = this.scene.get('GameScene');
         //  Listen for events from it
-        this.game.events.on('hideintro', this.hideIntro, this);
+        this.game.events.on('showdialogue', this.showDialogue, this);
 
-        // listen for dialogue events
-        this.game.events.on('showdialogue', this.showDialogue, this)
+        this.scene.pause('GameScene');
+    }
+
+    showStoryText(text){
+        this.introText.setText(text);
+        this.intro.setVisible(true);
+        this.introText.setVisible(true);
+        this.music.stop();
+        switch(this.storyline){
+            case 'magister':
+                console.log('magister end');
+                this.music = this.sound.add('magister-end');
+                break;
+            case 'landlord':
+                console.log('landlord end');    
+                this.music = this.sound.add('landlord-end');
+                break;
+            case 'accountant':
+                console.log('accountant end');
+                this.music = this.sound.add('accountant-end');
+                break;
+        }
+        this.music.play();
+        this.scene.pause('GameScene');
     }
 
     hideIntro(){
@@ -91,41 +115,77 @@ class UIScene extends Phaser.Scene {
             this.music.stop();
             this.music = this.sound.add('village');
             this.music.play();
+            this.scene.resume('GameScene');
         }
     }
 
     showDialogue(npc){
         this.scene.pause('GameScene');
+        this.storyline = npc.frame.texture.key;
         // get the dialogue
-        this.dialogue = Phaser.Utils.Array.GetFirst(this.script.dialogue, 'id', npc.frame.texture.key).script;
+        this.dialogue = Phaser.Utils.Array.GetFirst(this.script.dialogue, 'id', this.storyline);
         // show box
         this.dlg.setVisible(true);
         this.dlgText.setVisible(true);
         this.dialogueIndex = 0;
-        this.dlgText.setText(this.dialogue[this.dialogueIndex][1]);
+        this.dlgText.setText(this.dialogue.script[this.dialogueIndex][0] + ' : ' + this.dialogue.script[this.dialogueIndex][1]);
 
         // step through the text
         this.input.keyboard.on('keydown_SPACE', this.progressConvo, this);
-
-        
-        // accept choice input
     }
 
     progressConvo() {
         this.dialogueIndex++;
-        if(this.dialogueIndex >= this.dialogue.length) {
-            this.dialogueIndex = 0;
-            this.input.keyboard.off('keydown_SPACE', this.progressConvo);
-            this.hideDialogue();
-            this.scene.resume('GameScene');
+        if(this.dialogueIndex < this.dialogue.script.length) {
+            this.dlgText.setText(this.dialogue.script[this.dialogueIndex][0] + ' : ' + this.dialogue.script[this.dialogueIndex][1]);
+            return;
         }
-        this.dlgText.setText(this.dialogue[this.dialogueIndex][1]);
-        
+
+        this.dialogueIndex = 0;
+        this.input.keyboard.off('keydown_SPACE', this.progressConvo, this);
+        this.dlgText.setText(this.dialogue.options);
+        this.input.keyboard.on('keydown', this.makeChoice, this);
+    }
+
+    makeChoice(key) {
+        let optionsCount = this.dialogue.options.length;
+        let endGame = this.dialogue.endGameOption.toString();
+        switch(key.key){
+            case endGame:
+                this.showStoryText(this.dialogue.endGameStory);
+                this.hideDialogue();
+                break;
+            case "1":
+                this.hideDialogue();
+                break;
+            case "2":
+                if(optionsCount > 1) {
+                    this.hideDialogue();
+                }
+                break;
+            case "3":
+                if(optionsCount > 2) {
+                    this.hideDialogue();
+                }
+                break;
+            case "4":
+                if(optionsCount > 3) {
+                    this.hideDialogue();
+                }
+                break;
+            case "5":
+                if(optionsCount > 4) {
+                    this.hideDialogue();
+                }
+                break;
+        }
     }
 
     hideDialogue() {
+        this.input.keyboard.off('keydown', this.makeChoice, this);
         this.dlg.setVisible(false);
         this.dlgText.setVisible(false);
+        this.scene.resume('GameScene');
     }
 }
 export default UIScene;
