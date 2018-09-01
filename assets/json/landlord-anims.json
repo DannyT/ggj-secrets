@@ -1,0 +1,220 @@
+{
+    "anims": [
+        {
+            "key": "landlord-idle-up",
+            "type": "frame",
+            "frames": [{
+                "key": "landlord",
+                "frame": "0"
+            },
+            {
+                "key": "landlord",
+                "frame": "1"
+            }],
+            "frameRate": 2,
+            "repeat": -1,
+            "yoyo": true
+        },
+        {
+            "key": "landlord-idle-left",
+            "type": "frame",
+            "frames": [{
+                "key": "landlord",
+                "frame": "13"
+            },
+            {
+                "key": "landlord",
+                "frame": "14"
+            }],
+            "frameRate": 2,
+            "repeat": -1,
+            "yoyo": true
+        },
+        {
+            "key": "landlord-idle-down",
+            "type": "frame",
+            "frames": [{
+                "key": "landlord",
+                "frame": "26"
+            },
+            {
+                "key": "landlord",
+                "frame": "27"
+            }],
+            "frameRate": 2,
+            "repeat": -1,
+            "yoyo": true
+        },
+        {
+            "key": "landlord-idle-right",
+            "type": "frame",
+            "frames": [{
+                "key": "landlord",
+                "frame": "39"
+            },
+            {
+                "key": "landlord",
+                "frame": "40"
+            }],
+            "frameRate": 2,
+            "repeat": -1,
+            "yoyo": true
+        },
+        {
+            "key": "landlord-walk-up",
+            "type": "frame",
+            "frames": [
+            {
+                "key": "landlord",
+                "frame": "105"
+            },
+            {
+                "key": "landlord",
+                "frame": "106"
+            },
+            {
+                "key": "landlord",
+                "frame": "107"
+            },
+            {
+                "key": "landlord",
+                "frame": "108"
+            },
+            {
+                "key": "landlord",
+                "frame": "109"
+            },
+            {
+                "key": "landlord",
+                "frame": "110"
+            },
+            {
+                "key": "landlord",
+                "frame": "111"
+            },
+            {
+                "key": "landlord",
+                "frame": "112"
+            }],
+            "frameRate": 12,
+            "repeat": -1
+        },
+        {
+            "key": "landlord-walk-left",
+            "type": "frame",
+            "frames": [
+            {
+                "key": "landlord",
+                "frame": "118"
+            },
+            {
+                "key": "landlord",
+                "frame": "119"
+            },
+            {
+                "key": "landlord",
+                "frame": "120"
+            },
+            {
+                "key": "landlord",
+                "frame": "121"
+            },
+            {
+                "key": "landlord",
+                "frame": "122"
+            },
+            {
+                "key": "landlord",
+                "frame": "123"
+            },
+            {
+                "key": "landlord",
+                "frame": "124"
+            },
+            {
+                "key": "landlord",
+                "frame": "125"
+            }],
+            "frameRate": 12,
+            "repeat": -1
+        },
+        {
+            "key": "landlord-walk-down",
+            "type": "frame",
+            "frames": [
+            {
+                "key": "landlord",
+                "frame": "131"
+            },
+            {
+                "key": "landlord",
+                "frame": "132"
+            },
+            {
+                "key": "landlord",
+                "frame": "133"
+            },
+            {
+                "key": "landlord",
+                "frame": "134"
+            },
+            {
+                "key": "landlord",
+                "frame": "135"
+            },
+            {
+                "key": "landlord",
+                "frame": "136"
+            },
+            {
+                "key": "landlord",
+                "frame": "137"
+            },
+            {
+                "key": "landlord",
+                "frame": "138"
+            }],
+            "frameRate": 12,
+            "repeat": -1
+        },
+        {
+            "key": "landlord-walk-right",
+            "type": "frame",
+            "frames": [
+            {
+                "key": "landlord",
+                "frame": "144"
+            },
+            {
+                "key": "landlord",
+                "frame": "145"
+            },
+            {
+                "key": "landlord",
+                "frame": "146"
+            },
+            {
+                "key": "landlord",
+                "frame": "147"
+            },
+            {
+                "key": "landlord",
+                "frame": "148"
+            },
+            {
+                "key": "landlord",
+                "frame": "149"
+            },
+            {
+                "key": "landlord",
+                "frame": "150"
+            },
+            {
+                "key": "landlord",
+                "frame": "151"
+            }],
+            "frameRate": 12,
+            "repeat": -1
+        }
+    ]
+}

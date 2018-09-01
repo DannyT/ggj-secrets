@@ -1,0 +1,220 @@
+{
+    "anims": [
+        {
+            "key": "magister-idle-up",
+            "type": "frame",
+            "frames": [{
+                "key": "magister",
+                "frame": "0"
+            },
+            {
+                "key": "magister",
+                "frame": "1"
+            }],
+            "frameRate": 2,
+            "repeat": -1,
+            "yoyo": true
+        },
+        {
+            "key": "magister-idle-left",
+            "type": "frame",
+            "frames": [{
+                "key": "magister",
+                "frame": "13"
+            },
+            {
+                "key": "magister",
+                "frame": "14"
+            }],
+            "frameRate": 2,
+            "repeat": -1,
+            "yoyo": true
+        },
+        {
+            "key": "magister-idle-down",
+            "type": "frame",
+            "frames": [{
+                "key": "magister",
+                "frame": "26"
+            },
+            {
+                "key": "magister",
+                "frame": "27"
+            }],
+            "frameRate": 2,
+            "repeat": -1,
+            "yoyo": true
+        },
+        {
+            "key": "magister-idle-right",
+            "type": "frame",
+            "frames": [{
+                "key": "magister",
+                "frame": "39"
+            },
+            {
+                "key": "magister",
+                "frame": "40"
+            }],
+            "frameRate": 2,
+            "repeat": -1,
+            "yoyo": true
+        },
+        {
+            "key": "magister-walk-up",
+            "type": "frame",
+            "frames": [
+            {
+                "key": "magister",
+                "frame": "105"
+            },
+            {
+                "key": "magister",
+                "frame": "106"
+            },
+            {
+                "key": "magister",
+                "frame": "107"
+            },
+            {
+                "key": "magister",
+                "frame": "108"
+            },
+            {
+                "key": "magister",
+                "frame": "109"
+            },
+            {
+                "key": "magister",
+                "frame": "110"
+            },
+            {
+                "key": "magister",
+                "frame": "111"
+            },
+            {
+                "key": "magister",
+                "frame": "112"
+            }],
+            "frameRate": 12,
+            "repeat": -1
+        },
+        {
+            "key": "magister-walk-left",
+            "type": "frame",
+            "frames": [
+            {
+                "key": "magister",
+                "frame": "118"
+            },
+            {
+                "key": "magister",
+                "frame": "119"
+            },
+            {
+                "key": "magister",
+                "frame": "120"
+            },
+            {
+                "key": "magister",
+                "frame": "121"
+            },
+            {
+                "key": "magister",
+                "frame": "122"
+            },
+            {
+                "key": "magister",
+                "frame": "123"
+            },
+            {
+                "key": "magister",
+                "frame": "124"
+            },
+            {
+                "key": "magister",
+                "frame": "125"
+            }],
+            "frameRate": 12,
+            "repeat": -1
+        },
+        {
+            "key": "magister-walk-down",
+            "type": "frame",
+            "frames": [
+            {
+                "key": "magister",
+                "frame": "131"
+            },
+            {
+                "key": "magister",
+                "frame": "132"
+            },
+            {
+                "key": "magister",
+                "frame": "133"
+            },
+            {
+                "key": "magister",
+                "frame": "134"
+            },
+            {
+                "key": "magister",
+                "frame": "135"
+            },
+            {
+                "key": "magister",
+                "frame": "136"
+            },
+            {
+                "key": "magister",
+                "frame": "137"
+            },
+            {
+                "key": "magister",
+                "frame": "138"
+            }],
+            "frameRate": 12,
+            "repeat": -1
+        },
+        {
+            "key": "magister-walk-right",
+            "type": "frame",
+            "frames": [
+            {
+                "key": "magister",
+                "frame": "144"
+            },
+            {
+                "key": "magister",
+                "frame": "145"
+            },
+            {
+                "key": "magister",
+                "frame": "146"
+            },
+            {
+                "key": "magister",
+                "frame": "147"
+            },
+            {
+                "key": "magister",
+                "frame": "148"
+            },
+            {
+                "key": "magister",
+                "frame": "149"
+            },
+            {
+                "key": "magister",
+                "frame": "150"
+            },
+            {
+                "key": "magister",
+                "frame": "151"
+            }],
+            "frameRate": 12,
+            "repeat": -1
+        }
+    ]
+}

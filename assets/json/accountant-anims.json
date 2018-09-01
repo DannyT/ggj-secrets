@@ -1,0 +1,220 @@
+{
+    "anims": [
+        {
+            "key": "accountant-idle-up",
+            "type": "frame",
+            "frames": [{
+                "key": "accountant",
+                "frame": "0"
+            },
+            {
+                "key": "accountant",
+                "frame": "1"
+            }],
+            "frameRate": 2,
+            "repeat": -1,
+            "yoyo": true
+        },
+        {
+            "key": "accountant-idle-left",
+            "type": "frame",
+            "frames": [{
+                "key": "accountant",
+                "frame": "13"
+            },
+            {
+                "key": "accountant",
+                "frame": "14"
+            }],
+            "frameRate": 2,
+            "repeat": -1,
+            "yoyo": true
+        },
+        {
+            "key": "accountant-idle-down",
+            "type": "frame",
+            "frames": [{
+                "key": "accountant",
+                "frame": "26"
+            },
+            {
+                "key": "accountant",
+                "frame": "27"
+            }],
+            "frameRate": 2,
+            "repeat": -1,
+            "yoyo": true
+        },
+        {
+            "key": "accountant-idle-right",
+            "type": "frame",
+            "frames": [{
+                "key": "accountant",
+                "frame": "39"
+            },
+            {
+                "key": "accountant",
+                "frame": "40"
+            }],
+            "frameRate": 2,
+            "repeat": -1,
+            "yoyo": true
+        },
+        {
+            "key": "accountant-walk-up",
+            "type": "frame",
+            "frames": [
+            {
+                "key": "accountant",
+                "frame": "105"
+            },
+            {
+                "key": "accountant",
+                "frame": "106"
+            },
+            {
+                "key": "accountant",
+                "frame": "107"
+            },
+            {
+                "key": "accountant",
+                "frame": "108"
+            },
+            {
+                "key": "accountant",
+                "frame": "109"
+            },
+            {
+                "key": "accountant",
+                "frame": "110"
+            },
+            {
+                "key": "accountant",
+                "frame": "111"
+            },
+            {
+                "key": "accountant",
+                "frame": "112"
+            }],
+            "frameRate": 12,
+            "repeat": -1
+        },
+        {
+            "key": "accountant-walk-left",
+            "type": "frame",
+            "frames": [
+            {
+                "key": "accountant",
+                "frame": "118"
+            },
+            {
+                "key": "accountant",
+                "frame": "119"
+            },
+            {
+                "key": "accountant",
+                "frame": "120"
+            },
+            {
+                "key": "accountant",
+                "frame": "121"
+            },
+            {
+                "key": "accountant",
+                "frame": "122"
+            },
+            {
+                "key": "accountant",
+                "frame": "123"
+            },
+            {
+                "key": "accountant",
+                "frame": "124"
+            },
+            {
+                "key": "accountant",
+                "frame": "125"
+            }],
+            "frameRate": 12,
+            "repeat": -1
+        },
+        {
+            "key": "accountant-walk-down",
+            "type": "frame",
+            "frames": [
+            {
+                "key": "accountant",
+                "frame": "131"
+            },
+            {
+                "key": "accountant",
+                "frame": "132"
+            },
+            {
+                "key": "accountant",
+                "frame": "133"
+            },
+            {
+                "key": "accountant",
+                "frame": "134"
+            },
+            {
+                "key": "accountant",
+                "frame": "135"
+            },
+            {
+                "key": "accountant",
+                "frame": "136"
+            },
+            {
+                "key": "accountant",
+                "frame": "137"
+            },
+            {
+                "key": "accountant",
+                "frame": "138"
+            }],
+            "frameRate": 12,
+            "repeat": -1
+        },
+        {
+            "key": "accountant-walk-right",
+            "type": "frame",
+            "frames": [
+            {
+                "key": "accountant",
+                "frame": "144"
+            },
+            {
+                "key": "accountant",
+                "frame": "145"
+            },
+            {
+                "key": "accountant",
+                "frame": "146"
+            },
+            {
+                "key": "accountant",
+                "frame": "147"
+            },
+            {
+                "key": "accountant",
+                "frame": "148"
+            },
+            {
+                "key": "accountant",
+                "frame": "149"
+            },
+            {
+                "key": "accountant",
+                "frame": "150"
+            },
+            {
+                "key": "accountant",
+                "frame": "151"
+            }],
+            "frameRate": 12,
+            "repeat": -1
+        }
+    ]
+}

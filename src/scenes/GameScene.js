@@ -11,28 +11,30 @@ class GameScene extends Phaser.Scene {
 
   create() {
     var map = this.make.tilemap({ key: 'map' });
-    var tileset = map.addTilesetImage('terrain-assets-extruded','terrain'); 
-    var belowLayer = map.createDynamicLayer('Below Player', tileset, 0, 0);
-    var worldLayer = map.createDynamicLayer('World', tileset, 0, 0);
+    var tilesetTerrain = map.addTilesetImage('terrain-assets-extruded','terrain');
+    var tilesetBuildings = map.addTilesetImage('base-assets-extruded','buildings');
+    var belowLayer = map.createStaticLayer('Below Player', tilesetTerrain, 0, 0);
+    var belowLayerDecor = map.createStaticLayer('Below Player Decoration', tilesetTerrain, 0, 0);
+    var worldLayer = map.createStaticLayer('World', tilesetBuildings, 0, 0);
     worldLayer.setCollisionByProperty({ collides: true });
-    var aboveLayer = map.createDynamicLayer('Above Player', tileset, 0, 0);
-    aboveLayer.setDepth(10);
+    // var aboveLayer = map.createStaticLayer('Above Player', tileset, 0, 0);
+    // aboveLayer.setDepth(10);
     var objectLayer = map.getObjectLayer('Objects');
 
-    var spawnPoint = Phaser.Utils.Array.GetFirst(objectLayer.objects, 'name', 'spawn');
-    // create physics sprite
-    this.player = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, 'player');
-    this.player.setCollideWorldBounds(true);
+
+
     // create animations from data
     var data = this.cache.json.get('player-anims');
     this.anims.fromJSON(data);
+    data = this.cache.json.get('landlord-anims');
+    this.anims.fromJSON(data);
+    data = this.cache.json.get('magister-anims');
+    this.anims.fromJSON(data);
+    data = this.cache.json.get('accountant-anims');
+    this.anims.fromJSON(data);
     this.idleState = 'idle-down';
-    this.player.play(this.idleState);
-    this.player.setSize(38, 40)
-    this.player.setOffset(13,24);
 
-    this.cameras.main.setBounds(0, 0, belowLayer.width, belowLayer.height);
-    this.cameras.main.startFollow(this.player);
+
 
     // set up keyboard input
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -50,6 +52,43 @@ class GameScene extends Phaser.Scene {
     this.input.on('pointerup', (pointer, gameObject) => {
         this.pointerIsActive = false;
     });
+
+    // npcs
+    spawnPoint = Phaser.Utils.Array.GetFirst(objectLayer.objects, 'name', 'magister');
+    this.magister = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, 'magister');
+    this.magister.setSize(38, 40)
+    this.magister.setOffset(13,24);
+    this.magister.setImmovable();
+    this.magister.play('magister-idle-down');
+    
+    spawnPoint = Phaser.Utils.Array.GetFirst(objectLayer.objects, 'name', 'landlord');
+    this.landlord = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, 'landlord');
+    this.landlord.setSize(38, 40)
+    this.landlord.setOffset(13,24);
+    this.landlord.setImmovable();
+    this.landlord.play('landlord-idle-down');
+
+    spawnPoint = Phaser.Utils.Array.GetFirst(objectLayer.objects, 'name', 'accountant');
+    this.accountant = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, 'accountant');
+    this.accountant.setSize(38, 40)
+    this.accountant.setOffset(13,24);
+    this.accountant.setImmovable();
+    this.accountant.play('accountant-idle-down');
+
+    // create player sprite
+    var spawnPoint = Phaser.Utils.Array.GetFirst(objectLayer.objects, 'name', 'spawn');
+    this.player = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, 'player');
+    this.player.setSize(38, 40)
+    this.player.setOffset(13,24);
+    this.player.play(this.idleState);
+        
+    this.cameras.main.setBounds(0, 0, belowLayer.width, belowLayer.height);
+    this.cameras.main.startFollow(this.player);
+
+    this.physics.add.collider(this.player, this.magister);
+    this.physics.add.collider(this.player, this.landlord);
+    this.physics.add.collider(this.player, this.accountant);
+    this.physics.add.collider(this.player, worldLayer);
   }
 
   update(time, delta) {
