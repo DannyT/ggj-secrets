@@ -133,6 +133,8 @@ class UIScene extends Phaser.Scene {
 
         // step through the text
         this.input.keyboard.on('keydown_SPACE', this.progressConvo, this);
+        // cancel
+        this.input.keyboard.on('keydown_ESC', this.hideDialogue, this);
     }
 
     progressConvo() {
@@ -153,8 +155,8 @@ class UIScene extends Phaser.Scene {
         let endGame = this.dialogue.endGameOption.toString();
         switch(key.key){
             case endGame:
-                this.showStoryText(this.dialogue.endGameStory);
                 this.hideDialogue();
+                this.showStoryText(this.dialogue.endGameStory);
                 break;
             case "1":
                 this.hideDialogue();
