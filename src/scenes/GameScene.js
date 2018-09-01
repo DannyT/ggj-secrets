@@ -21,8 +21,6 @@ class GameScene extends Phaser.Scene {
     // aboveLayer.setDepth(10);
     var objectLayer = map.getObjectLayer('Objects');
 
-
-
     // create animations from data
     var data = this.cache.json.get('player-anims');
     this.anims.fromJSON(data);
@@ -33,8 +31,6 @@ class GameScene extends Phaser.Scene {
     data = this.cache.json.get('accountant-anims');
     this.anims.fromJSON(data);
     this.idleState = 'idle-down';
-
-
 
     // set up keyboard input
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -89,6 +85,47 @@ class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.player, this.landlord);
     this.physics.add.collider(this.player, this.accountant);
     this.physics.add.collider(this.player, worldLayer);
+
+    // Intro dialogue
+    let gameWidth = this.sys.game.config.width;
+    let gameHeight = this.sys.game.config.height;
+    let introWidth = gameWidth * 0.5;
+    let introHeight = gameHeight * 0.75;
+    let xOffset = gameWidth/2-introWidth/2;
+    this.intro = this.add.nineslice(
+        xOffset, gameHeight/2,   // this is the starting x/y location
+        introWidth, introHeight,   // the width and height of your object
+        {
+            key:'atlas',
+            frame: 'ui/panel_brown.png'
+        },
+        10,         // the width and height to offset for a corner slice
+        10          // (optional) pixels to offset when computing the safe usage area
+    );
+    this.intro.setInteractive();
+    // Intro text
+    var script = this.cache.json.get('script');
+    var dlgRect = this.intro.getUsableBounds();
+    this.introText = this.make.text({
+        x: dlgRect.x,
+        y: dlgRect.y,
+        text: script.intro,
+        style: {
+            font: '25px "Courier New"',
+            fill: 'black',
+            wordWrap: { width: dlgRect.width }
+        }
+    });
+    
+    // intro music
+    this.music = this.sound.add('theme');
+    this.music.play();
+
+    this.intro.on('pointerup', () => {
+        this.intro.setVisible(false);
+        this.introText.setVisible(false);
+        this.music.stop();
+    });
   }
 
   update(time, delta) {

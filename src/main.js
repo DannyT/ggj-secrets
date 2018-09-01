@@ -2,6 +2,7 @@ import 'phaser';
 import BootScene from './scenes/BootScene';
 import GameScene from './scenes/GameScene';
 import TitleScene from './scenes/TitleScene';
+import { Plugin as NineSlicePlugin } from 'phaser3-nineslice';
 
 
 let config = {
@@ -25,7 +26,10 @@ let config = {
         BootScene,                  // First scene to load, sets up config and remains loaded
         TitleScene,                 // Show splash screen, instructions, "press space to play" etc
         GameScene,                  // Actual game scene
-    ]
+    ],
+    plugins: {
+        global: [ NineSlicePlugin.DefaultCfg ],
+    }
 };
 
 let game = new Phaser.Game(config);
