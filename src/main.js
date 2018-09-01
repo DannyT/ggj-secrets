@@ -2,6 +2,7 @@ import 'phaser';
 import BootScene from './scenes/BootScene';
 import GameScene from './scenes/GameScene';
 import TitleScene from './scenes/TitleScene';
+import UIScene from './scenes/UIScene';
 import { Plugin as NineSlicePlugin } from 'phaser3-nineslice';
 
 
@@ -19,6 +20,7 @@ let config = {
     physics: {
         default: 'arcade',
         arcade: {
+            // debug:true,
             gravity: { y: 0 }
         }
     },
@@ -26,6 +28,7 @@ let config = {
         BootScene,                  // First scene to load, sets up config and remains loaded
         TitleScene,                 // Show splash screen, instructions, "press space to play" etc
         GameScene,                  // Actual game scene
+        UIScene,
     ],
     plugins: {
         global: [ NineSlicePlugin.DefaultCfg ],
@@ -33,7 +36,6 @@ let config = {
 };
 
 let game = new Phaser.Game(config);
-
 
 // listen for browser resize and invoke the game's resize function
 window.addEventListener('resize', function (event) {

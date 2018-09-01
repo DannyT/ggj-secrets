@@ -1,3 +1,33 @@
 {
-    "intro":"You are Stefano, a 20 year-old alchemist who wants to find a way to change things into gold. You also work weekends at the village pub to raise funds for your research and pay the bills.\n\nOne day you venture forth into the forest and discover a cave, there's a glacier deep inside the cave and you can definitely see an impressive amount of gold behind a thick layer of ice. This is gonna solve all your problems! You would have gold and, although you could just enjoy the gold, you definitely want to spend all the gold trying to learn how to turn things into gold... if that makes sense?\n\nThe thing is, you are not able to extract the gold on your own. It takes two people to do the job, hence you must find a buddy and although you have many friends you have to speak to them without letting on, trying to understand how reliable they are, before you can decide who you are gonna to share the secret with.\n\nAny key to start"
+    "intro":"You are Stefano, a 20 year-old alchemist who wants to find a way to change things into gold. You also work weekends at the village pub to raise funds for your research and pay the bills.\n\nOne day you venture forth into the forest and discover a cave, there's a glacier deep inside the cave and you can definitely see an impressive amount of gold behind a thick layer of ice. This is gonna solve all your problems! You would have gold and, although you could just enjoy the gold, you definitely want to spend all the gold trying to learn how to turn things into gold... if that makes sense?\n\nThe thing is, you are not able to extract the gold on your own. It takes two people to do the job, hence you must find a buddy and although you have many friends you have to speak to them without letting on, trying to understand how reliable they are, before you can decide who you are gonna to share the secret with.\n\nAny key to start",
+    "dialogue":[
+        {
+            "id" : "magister",
+            "script" : [
+                ["player", "Hello Magister, how are you?"],
+                ["magister", "I am good, just started writing a book about alchemy, I want to make my knowledge available for the future generations....you know.....how about you? You are still obsessed with your dream of turning things into gold, aren't you?"],
+                ["player", "you bet it!......I wanted to ask you? What would you do if you had a ridiculous amount of gold at your disposal?"],
+                ["magister", "mmmm....that's a good question...I am quite happy about my life and I don't care much about material possessions, I would help my friends first and then I would open an alchemy school in the village."],
+                ["player", "Oh, I see....your intentions are noble and you are a very good person."]
+            ]
+        },
+        {
+            "id" : "landlord",
+            "script" : [
+                ["player", "Good morning boss, how are you?"],
+                ["landlord", "I can't complain, Stefano, I have just received a supply of the finest ale in the county, I bet it's gonna be a success this weekend, our customers are gonna love it!"],
+                ["player", "Sounds great! Oh....with regard to this weekend, I might not be able to work because I found.....erm....I feel rough to be honest.....I shall let you know tomorrow whether I am feeling better or not, is that okay?"],
+                ["landlord", "Well....that's not great, I should ideally know in advance so that I can find some cover? Shall I find you a replacement for this weekend? It's gonna be easier if you can tell me now, Stefano......"]
+            ]
+        },
+        {
+            "id" : "accountant",
+            "script" : [
+                ["player", "Hello Sir, is it possible to check how I have done this quarter, please?"],
+                ["accountant", "Sure thing, Stefano, that's no trouble......let me see...."],
+                ["accountant", "...shuffle, shuffle, shuffle..."],
+                ["accountant", "Here we are: you are doing 0K at the minute.....your weekend job is providing a stable income but you maybe spent too much on alchemy books and equipment. You would need someone to invest on your research, if you want to take it to the next level.....it probably needs an external \"boost\", if you see what I mean? Well....unless you can find a gold mine instead......AHAHAHAH"]
+            ]
+        }
+    ]
 }
