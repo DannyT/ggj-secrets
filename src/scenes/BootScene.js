@@ -31,8 +31,11 @@ class BootScene extends Phaser.Scene {
       this.load.image('buildings', 'assets/tilesets/base-assets-extruded.png');
       this.load.tilemapTiledJSON('map', 'assets/tilemaps/village.json');
 
-      this.load.audio('theme', [
+      this.load.audio('intro', [
         'assets/audio/Prologue_1.mp3'
+      ]);
+      this.load.audio('village', [
+        'assets/audio/Village_1.0.mp3'
       ]);
 
       // animation spritesheet (create at http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/)
