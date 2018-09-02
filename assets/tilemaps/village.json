@@ -112,6 +112,18 @@
                  "width":0,
                  "x":1745,
                  "y":1356.75
+                }, 
+                {
+                 "height":0,
+                 "id":10,
+                 "name":"beggar",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":675.808997632202,
+                 "y":1182.91239147593
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -119,7 +131,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":10,
+ "nextobjectid":11,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.1.6",

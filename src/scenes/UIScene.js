@@ -218,6 +218,9 @@ class UIScene extends Phaser.Scene {
             case 'kim':
                 this.music = this.sound.add('kim-end');
                 break;
+            case 'beggar':
+                this.music = this.sound.add('beggar-end');
+                break;
         }
         this.music.play();
         this.scene.pause('GameScene');

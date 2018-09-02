@@ -81,6 +81,20 @@
                 ["","fair enough, you have to do what you have to do in the end..."]
             ],
             "endGameStory" : "You and Kim dig out all the gold, spend half for the marriage, put the rest in the bank and pay 33% taxes on it, the remainder is still enough to finance your research, on a smaller scale but you can't have your gold tax free can you?"
+        },
+        {
+            "id" : "beggar",
+            "script" : [
+                ["Beggar","Have you got any spare change?"],
+                ["Stefano","No, but I assume that I can find some money for you if you can help me to get a certain job done..."],
+                ["Beggar","What do you want me to do?"]
+            ],
+            "options" : [
+                [1,"I want you to mow my lawn..."],
+                [2,"I want you to come with me and extract the gold from a secret cave in the forest..."]
+            ],
+            "endGameOption" : 2,
+            "endGameStory" : "You decided to share your secret with the Begger, UNFORTUNATELY this wasn't an actual begger, he was a devil worshipper undercover.......\n\nHe's gonna sacrifice you on the altar of madness and donate the gold to Lavey's church."
         }
     ]
 }

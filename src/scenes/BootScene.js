@@ -31,6 +31,23 @@ class BootScene extends Phaser.Scene {
       this.load.image('town', 'assets/tilesets/town-combined-extruded.png');
       this.load.tilemapTiledJSON('map', 'assets/tilemaps/village.json');
 
+      // animation spritesheet (create at http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/)
+      this.load.spritesheet('player', 'assets/images/character.png', { frameWidth: 64, frameHeight: 64 });
+      this.load.spritesheet('magister', 'assets/images/magister.png', { frameWidth: 64, frameHeight: 64 });
+      this.load.spritesheet('landlord', 'assets/images/landlord.png', { frameWidth: 64, frameHeight: 64 });
+      this.load.spritesheet('kim', 'assets/images/kim.png', { frameWidth: 64, frameHeight: 64 });
+      this.load.spritesheet('accountant', 'assets/images/accountant.png', { frameWidth: 64, frameHeight: 64 });
+      this.load.spritesheet('beggar', 'assets/images/beggar.png', { frameWidth: 64, frameHeight: 64 });
+      // animation data
+      this.load.json('player-anims', 'assets/json/character-anims.json');
+      this.load.json('magister-anims', 'assets/json/magister-anims.json');
+      this.load.json('landlord-anims', 'assets/json/landlord-anims.json');
+      this.load.json('accountant-anims', 'assets/json/accountant-anims.json');
+      this.load.json('kim-anims', 'assets/json/kim-anims.json');
+      this.load.json('beggar-anims', 'assets/json/beggar-anims.json');
+      this.load.json('script', 'assets/json/script.json');
+
+      // music
       this.load.audio('intro', [
         'assets/audio/Prologue_1.mp3'
       ]);
@@ -49,20 +66,9 @@ class BootScene extends Phaser.Scene {
       this.load.audio('kim-end', [
         'assets/audio/Kim_Ending_1.0.mp3'
       ]);
-
-      // animation spritesheet (create at http://gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/)
-      this.load.spritesheet('player', 'assets/images/character.png', { frameWidth: 64, frameHeight: 64 });
-      this.load.spritesheet('magister', 'assets/images/magister.png', { frameWidth: 64, frameHeight: 64 });
-      this.load.spritesheet('landlord', 'assets/images/landlord.png', { frameWidth: 64, frameHeight: 64 });
-      this.load.spritesheet('kim', 'assets/images/kim.png', { frameWidth: 64, frameHeight: 64 });
-      this.load.spritesheet('accountant', 'assets/images/accountant.png', { frameWidth: 64, frameHeight: 64 });
-      // animation data
-      this.load.json('player-anims', 'assets/json/character-anims.json');
-      this.load.json('magister-anims', 'assets/json/magister-anims.json');
-      this.load.json('landlord-anims', 'assets/json/landlord-anims.json');
-      this.load.json('accountant-anims', 'assets/json/accountant-anims.json');
-      this.load.json('kim-anims', 'assets/json/kim-anims.json');
-      this.load.json('script', 'assets/json/script.json');
+      this.load.audio('beggar-end', [
+        'assets/audio/Begger_Ending_Complete_1.0.mp3'
+      ]);
     }
 
     create(){

@@ -43,6 +43,8 @@ class GameScene extends Phaser.Scene {
         this.anims.fromJSON(data);
         data = this.cache.json.get('kim-anims');
         this.anims.fromJSON(data);
+        data = this.cache.json.get('beggar-anims');
+        this.anims.fromJSON(data);
         this.idleState = 'idle-down';
 
         // set up keyboard input
@@ -66,7 +68,7 @@ class GameScene extends Phaser.Scene {
 
         // npcs
         this.npcGroup = this.physics.add.staticGroup({
-            key: ['magister','landlord','accountant', 'kim'],
+            key: ['magister','landlord','accountant', 'kim', 'beggar'],
             immovable: true
         });
         var children = this.npcGroup.getChildren();

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="10">
+<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" infinite="0" nextobjectid="11">
  <tileset firstgid="1" name="terrain-assets-extruded" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="1024" columns="32">
   <image source="../../assets/tilesets/terrain-assets-extruded.png" width="1088" height="1088"/>
   <terraintypes>
@@ -9405,6 +9405,9 @@
    <point/>
   </object>
   <object id="7" name="kim" x="1745" y="1356.75">
+   <point/>
+  </object>
+  <object id="10" name="beggar" x="675.809" y="1182.91">
    <point/>
   </object>
  </objectgroup>
