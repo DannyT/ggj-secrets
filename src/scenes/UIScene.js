@@ -44,7 +44,7 @@ class UIScene extends Phaser.Scene {
 
         // dialogue box
         boxWidth = gameWidth * 0.95;
-        boxHeight = 150;
+        boxHeight = 180;
         xOffset = gameWidth/2-boxWidth/2;
         this.dlg = this.add.nineslice(
             xOffset, gameHeight-boxHeight,   // this is the starting x/y location
@@ -151,7 +151,15 @@ class UIScene extends Phaser.Scene {
         if(!this.hasPlayedEndGame) {
             this.input.keyboard.off('keydown_SPACE', this.progressConvo, this);
             //show options
-            this.setText(this.dialogue.options.toString());
+            let optionsFormatted = '';
+            for(let i=0; i < this.dialogue.options.length; i++) {
+                optionsFormatted += this.dialogue.options[i][0];
+                optionsFormatted += ') ';
+                optionsFormatted += this.dialogue.options[i][1];
+                optionsFormatted += '\n';
+            }
+            optionsFormatted += '\nEnter a number to make your choice...';
+            this.setText(optionsFormatted);
             this.input.keyboard.on('keydown', this.makeChoice, this);
         } else {
             this.showEndGame();
