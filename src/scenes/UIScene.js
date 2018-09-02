@@ -91,7 +91,7 @@ class UIScene extends Phaser.Scene {
 
     showStoryText(text){
         this.currentTextBox = this.introText;
-        this.setText(text);
+        this.setText(text + '\n\nPress any key to start again');
         this.intro.setVisible(true);
         this.introText.setVisible(true);
         this.music.stop();
@@ -111,6 +111,7 @@ class UIScene extends Phaser.Scene {
         }
         this.music.play();
         this.scene.pause('GameScene');
+        this.input.keyboard.on('keydown', this.restartGame, this);
     }
 
     hideIntro(){
@@ -218,6 +219,15 @@ class UIScene extends Phaser.Scene {
         if(this.currentTextBox.visible){
             this.currentTextBox.setText(this.currentTextToShow.substring(0,this.currentTextBox.text.length+1));
         }
+    }
+
+    restartGame() {
+        if(this.currentTextBox.text.length < this.currentTextToShow.length) {
+            this.currentTextBox.setText(this.currentTextToShow);
+            return;
+        }
+        this.scene.restart();
+        this.game.scene.restart();
     }
 }
 export default UIScene;
