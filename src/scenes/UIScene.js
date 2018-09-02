@@ -11,8 +11,8 @@ class UIScene extends Phaser.Scene {
         let gameHeight = this.sys.game.config.height;
         
         // Intro dialogue
-        let boxWidth = gameWidth * 0.5;
-        let boxHeight = gameHeight * 0.75;
+        let boxWidth = gameWidth * 0.6;
+        let boxHeight = gameHeight * 0.90;
         let xOffset = gameWidth/2-boxWidth/2;
         let yOffset = gameHeight/2-boxHeight/2;
 
@@ -21,7 +21,7 @@ class UIScene extends Phaser.Scene {
             boxWidth, boxHeight,   // the width and height of your object
             {
                 key:'atlas',
-                frame: 'ui/panel_brown.png'
+                frame: 'ui/panel_beige.png'
             },
             10,         // the width and height to offset for a corner slice
             10          // (optional) pixels to offset when computing the safe usage area
@@ -34,11 +34,11 @@ class UIScene extends Phaser.Scene {
         this.introText = this.make.text({
             x: dlgRect.x,
             y: dlgRect.y,
-            text: this.script.intro,
+            text: '',
             style: {
                 font: '25px "Courier New"',
                 fill: 'black',
-                wordWrap: { width: dlgRect.width }
+                wordWrap: { width: dlgRect.width*0.9 }
             }
         });
 
@@ -71,8 +71,11 @@ class UIScene extends Phaser.Scene {
             visible:false
         });
 
-        this.input.keyboard.once('keydown', this.hideIntro, this);
-        this.input.once('pointerup', this.hideIntro, this);
+        this.currentTextBox = this.introText;
+        this.setText(this.script.intro);
+
+        this.input.keyboard.on('keydown', this.hideIntro, this);
+        this.input.on('pointerup', this.hideIntro, this);
 
         // intro music
         this.music = this.sound.add('intro');
@@ -87,7 +90,8 @@ class UIScene extends Phaser.Scene {
     }
 
     showStoryText(text){
-        this.introText.setText(text);
+        this.currentTextBox = this.introText;
+        this.setText(text);
         this.intro.setVisible(true);
         this.introText.setVisible(true);
         this.music.stop();
@@ -111,6 +115,14 @@ class UIScene extends Phaser.Scene {
 
     hideIntro(){
         if(this.intro.visible) {
+            if(this.currentTextBox.text.length < this.currentTextToShow.length) {
+                this.currentTextBox.setText(this.currentTextToShow);
+                return;
+            }
+
+            this.input.keyboard.off('keydown', this.hideIntro, this);
+            this.input.off('pointerup', this.hideIntro, this);
+
             this.intro.setVisible(false);
             this.introText.setVisible(false);
             this.music.stop();
@@ -129,7 +141,8 @@ class UIScene extends Phaser.Scene {
         this.dlg.setVisible(true);
         this.dlgText.setVisible(true);
         this.dialogueIndex = 0;
-        this.dlgText.setText(this.dialogue.script[this.dialogueIndex][0] + ' : ' + this.dialogue.script[this.dialogueIndex][1]);
+        this.currentTextBox = this.dlgText;
+        this.setText(this.dialogue.script[this.dialogueIndex][0] + ' : ' + this.dialogue.script[this.dialogueIndex][1]);
 
         // step through the text
         this.input.keyboard.on('keydown_SPACE', this.progressConvo, this);
@@ -138,15 +151,20 @@ class UIScene extends Phaser.Scene {
     }
 
     progressConvo() {
+        if(this.currentTextBox.text.length < this.currentTextToShow.length) {
+            this.currentTextBox.setText(this.currentTextToShow);
+            return;
+        }
+
         this.dialogueIndex++;
         if(this.dialogueIndex < this.dialogue.script.length) {
-            this.dlgText.setText(this.dialogue.script[this.dialogueIndex][0] + ' : ' + this.dialogue.script[this.dialogueIndex][1]);
+            this.setText(this.dialogue.script[this.dialogueIndex][0] + ' : ' + this.dialogue.script[this.dialogueIndex][1]);
             return;
         }
 
         this.dialogueIndex = 0;
         this.input.keyboard.off('keydown_SPACE', this.progressConvo, this);
-        this.dlgText.setText(this.dialogue.options);
+        this.setText(this.dialogue.options.toString());
         this.input.keyboard.on('keydown', this.makeChoice, this);
     }
 
@@ -189,6 +207,17 @@ class UIScene extends Phaser.Scene {
         this.dlg.setVisible(false);
         this.dlgText.setVisible(false);
         this.scene.resume('GameScene');
+    }
+
+    setText(textToShow) {
+        this.currentTextBox.setText('');
+        this.currentTextToShow = textToShow;
+    }
+
+    update() {
+        if(this.currentTextBox.visible){
+            this.currentTextBox.setText(this.currentTextToShow.substring(0,this.currentTextBox.text.length+1));
+        }
     }
 }
 export default UIScene;
