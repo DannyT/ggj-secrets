@@ -1,12 +1,12 @@
 {
-    "intro":"You are Stefano, a 20 year-old alchemist who wants to find a way to change things into gold. You also work weekends at the village pub to raise funds for your research and pay the bills.\n\nOne day you venture forth into the forest and discover a cave, there's a glacier deep inside the cave and you can definitely see an impressive amount of gold behind a thick layer of ice. This is gonna solve all your problems! You would have gold and, although you could just enjoy the gold, you definitely want to spend all the gold trying to learn how to turn things into gold... if that makes sense?\n\nThe thing is, you are not able to extract the gold on your own. It takes two people to do the job, hence you must find a buddy and although you have many friends, you have to speak to them without letting on. Trying to understand how reliable they are, before you can decide who you are gonna to share the secret with.\n\nArrows or WASD to move, SPACE to interact\nPress any key to start",
+    "intro":"You are Stefano, a 20 year-old alchemist who wants to find a way to change things into gold. You also work weekends at the village pub to raise funds for your research and pay the bills.\n\nOne day you venture forth into the forest and discover a cave, there's a glacier deep inside the cave and you can definitely see an impressive amount of gold behind a thick layer of ice. This is gonna solve all your problems! You would have gold and, although you could just enjoy the gold, you definitely want to spend all the gold trying to learn how to turn things into gold... if that makes sense?\n\nThe thing is, you are not able to extract the gold on your own. It takes two people to do the job, hence you must find a buddy and although you have many friends, you have to speak to them without letting on. Trying to understand how reliable they are, before you can decide who you are gonna share the secret with.\n\nArrows or WASD to move, SPACE to interact\nPress any key to start",
     "dialogue":[
         {
             "id" : "magister",
             "script" : [
                 ["Stefano", "Hello Magister, how are you?"],
                 ["Magister", "I am good, just started writing a book about alchemy, I want to make my knowledge available for the future generations....you know.....how about you? You are still obsessed with your dream of turning things into gold, aren't you?"],
-                ["Stefano", "you bet it!......I wanted to ask you? What would you do if you had a ridiculous amount of gold at your disposal?"],
+                ["Stefano", "you bet it!......I wanted to ask you, what would you do if you had a ridiculous amount of gold at your disposal?"],
                 ["Magister", "mmmm....that's a good question...I am quite happy about my life and I don't care much about material possessions, I would help my friends first and then I would open an alchemy school in the village."],
                 ["Stefano", "Oh, I see....your intentions are noble and you are a very good person."]
             ],
@@ -39,7 +39,12 @@
                 [3, "Tell the Landlord that you are quitting the job"]
             ],
             "endGameOption" : 1,
-            "endGameStory" : "You tell the Landlord about your secret, he can be abrupt at times but he's a good guy, he is honest and he works really hard......\n\nyou then decide to trust him, take him to the cave and show him the gold....\n\nYOU HAVE MADE THE RIGHT DECISION!\n\nThe Landlord comes up with a strategy to extract the gold, there's enough to make you both rich forever, you could actually retire today!\n\nThe Landlord always wanted to make his own ale and now he can fund the best brewery ever, people will come from anywhere in the region to try his beer!\n\nYou can finally focus full time into your research and spend your life trying to turn things into gold, you are not gonna make it, ultimately we all know that you can't change an element into another, come on.....but at least you can leave the dream!"
+            "endGameScript" : [
+                ["", "You tell the Landlord about your secret"],
+                ["","He can be abrupt at times but he's a good guy. He is honest and he works really hard......"],
+                ["","You then decide to trust him, take him to the cave and show him the gold...."]
+            ],
+            "endGameStory" : "YOU HAVE MADE THE RIGHT DECISION!\n\nThe Landlord comes up with a strategy to extract the gold, there's enough to make you both rich forever, you could actually retire today!\n\nThe Landlord always wanted to make his own ale and now he can fund the best brewery ever, people will come from anywhere in the region to try his beer!\n\nYou can finally focus full time into your research and spend your life trying to turn things into gold, you are not gonna make it, ultimately we all know that you can't change an element into another, come on.....but at least you can leave the dream!"
         },
         {
             "id" : "accountant",

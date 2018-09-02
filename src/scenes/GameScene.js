@@ -7,7 +7,6 @@ class GameScene extends Phaser.Scene {
 
     resize(width, height) {
         this.cameras.resize(width, height);
-        this.physics.world.setBounds(0, 0, width, height);
     }
 
     preload() {
@@ -18,10 +17,10 @@ class GameScene extends Phaser.Scene {
         let gameHeight = this.sys.game.config.height;
         this.events.on('resize', this.resize, this);
         this.cameras.resize(gameWidth, gameHeight);
-        this.physics.world.setBounds(0, 0, gameWidth, gameHeight);
 
         // map
         var map = this.make.tilemap({ key: 'map' });
+        this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         var tilesetTerrain = map.addTilesetImage('terrain-assets-extruded','terrain');
         var tilesetBuildings = map.addTilesetImage('town-combined-extruded','town');
         var belowLayer = map.createStaticLayer('Below Player', tilesetTerrain, 0, 0);
@@ -55,7 +54,7 @@ class GameScene extends Phaser.Scene {
             left: Phaser.Input.Keyboard.KeyCodes.A,
             right: Phaser.Input.Keyboard.KeyCodes.D
         });
-        this.input.keyboard.on('keydown_SPACE', this.interact, this);
+        this.input.keyboard.on('keyup_SPACE', this.interact, this);
         
         // set up mouse/touch input
         this.pointerIsActive = false;
@@ -88,6 +87,7 @@ class GameScene extends Phaser.Scene {
         this.player = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, 'player');
         this.player.setSize(38, 40)
         this.player.setOffset(13,24);
+        this.player.setCollideWorldBounds(true);
         this.player.play(this.idleState);
         // interaction icon
         this.playerInteractIcon = this.add.sprite(this.player.x, this.player.y, 'atlas', 'ui/interactive-icon.png');

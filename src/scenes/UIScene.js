@@ -34,6 +34,7 @@ class UIScene extends Phaser.Scene {
             10,         // the width and height to offset for a corner slice
             10          // (optional) pixels to offset when computing the safe usage area
         );
+        this.introBox.setInteractive();
 
         this.introBoxDark = this.add.nineslice(
             this.boxConfig.xOffset, this.boxConfig.yOffset,   // this is the starting x/y location
@@ -46,7 +47,7 @@ class UIScene extends Phaser.Scene {
             10          // (optional) pixels to offset when computing the safe usage area
         ).setVisible(false);
 
-        this.introBox.setInteractive();
+        
         
         
         // Intro text
@@ -102,8 +103,7 @@ class UIScene extends Phaser.Scene {
         this.input.on('pointerup', this.hideIntro, this);
 
         // intro music
-        this.music = this.sound.add('intro');
-        this.music.play('',{ loop:true });
+        this.sound.play('intro', { loop:true });
 
         //  Grab a reference to the Game Scene
         this.game = this.scene.get('GameScene');
@@ -114,6 +114,9 @@ class UIScene extends Phaser.Scene {
 
         // boolean used to determine if the endGameScript has been played yet
         this.hasPlayedEndGame = false;
+        if(this.dialogue) {
+            this.dialogue = undefined;
+        }
     }
 
     hideIntro(){
@@ -128,9 +131,8 @@ class UIScene extends Phaser.Scene {
 
             this.introBox.setVisible(false);
             this.introText.setVisible(false);
-            this.music.stop();
-            this.music = this.sound.add('village');
-            this.music.play();
+            this.sound.stopAll();
+            this.sound.play('village', {loop:true});
             this.scene.resume('GameScene');
         }
     }
@@ -215,7 +217,6 @@ class UIScene extends Phaser.Scene {
 
     showEndGame(){
         if((this.dialogue.endGameScript != undefined) && !this.hasPlayedEndGame) {
-            console.log('Starting end game script');
             this.currentScript = this.dialogue.endGameScript;
             this.hasPlayedEndGame = true;
             this.showDialogue();
@@ -237,29 +238,28 @@ class UIScene extends Phaser.Scene {
             duration: 2000
         });
         
-        this.music.stop();
+        this.sound.stopAll();
         switch(this.storyline){
             case 'magister':
-                this.music = this.sound.add('magister-end');
+                this.sound.play('magister-end');
                 this.graphics.setVisible(true);
                 this.introBoxDark.setVisible(true);
                 break;
             case 'landlord':
-                this.music = this.sound.add('landlord-end');
+                this.sound.play('landlord-end');
                 break;
             case 'accountant':
-                this.music = this.sound.add('accountant-end');
+                this.sound.play('accountant-end');
                 break;
             case 'kim':
-                this.music = this.sound.add('kim-end');
+                this.sound.play('kim-end');
                 break;
             case 'beggar':
-                this.music = this.sound.add('beggar-end');
+                this.sound.play('beggar-end');
                 this.graphics.setVisible(true);
                 this.introBoxDark.setVisible(true);
                 break;
         }
-        this.music.play();
         this.scene.pause('GameScene');
         this.input.keyboard.on('keydown', this.restartGame, this);
     }
@@ -286,10 +286,7 @@ class UIScene extends Phaser.Scene {
             this.currentTextBox.setText(this.currentTextToShow);
             return;
         }
-        this.input.keyboard.off('keydown', this.restartGame, this);
-        this.music.stop();
-        this.scene.restart();
-        this.game.scene.restart();
+        window.location.reload(false); 
     }
 }
 export default UIScene;
