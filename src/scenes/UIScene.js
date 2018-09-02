@@ -84,34 +84,12 @@ class UIScene extends Phaser.Scene {
         //  Grab a reference to the Game Scene
         this.game = this.scene.get('GameScene');
         //  Listen for events from it
-        this.game.events.on('showdialogue', this.showDialogue, this);
+        this.game.events.on('showdialogue', this.startDialogue, this);
 
         this.scene.pause('GameScene');
-    }
 
-    showStoryText(text){
-        this.currentTextBox = this.introText;
-        this.setText(text + '\n\nPress any key to start again');
-        this.intro.setVisible(true);
-        this.introText.setVisible(true);
-        this.music.stop();
-        switch(this.storyline){
-            case 'magister':
-                this.music = this.sound.add('magister-end');
-                break;
-            case 'landlord':
-                this.music = this.sound.add('landlord-end');
-                break;
-            case 'accountant':
-                this.music = this.sound.add('accountant-end');
-                break;
-            case 'kim':
-                this.music = this.sound.add('kim-end');
-                break;
-        }
-        this.music.play();
-        this.scene.pause('GameScene');
-        this.input.keyboard.on('keydown', this.restartGame, this);
+        // boolean used to determine if the endGameScript has been played yet
+        this.hasPlayedEndGame = false;
     }
 
     hideIntro(){
@@ -133,17 +111,24 @@ class UIScene extends Phaser.Scene {
         }
     }
 
-    showDialogue(npc){
-        this.scene.pause('GameScene');
+    startDialogue(npc){
         this.storyline = npc.frame.texture.key;
-        // get the dialogue
+        // get the dialogue for this character
         this.dialogue = Phaser.Utils.Array.GetFirst(this.script.dialogue, 'id', this.storyline);
+        // we have multiple scripts per character (main script then end game script)
+        this.currentScript = this.dialogue.script;
+        this.showDialogue();
+    }
+
+    showDialogue() {
+        this.scene.pause('GameScene');
         // show box
         this.dlg.setVisible(true);
         this.dlgText.setVisible(true);
         this.dialogueIndex = 0;
         this.currentTextBox = this.dlgText;
-        this.setText(this.dialogue.script[this.dialogueIndex][0] + ' : ' + this.dialogue.script[this.dialogueIndex][1]);
+        
+        this.setText(this.currentScript[this.dialogueIndex][0] + ' : ' + this.currentScript[this.dialogueIndex][1]);
 
         // step through the text
         this.input.keyboard.on('keydown_SPACE', this.progressConvo, this);
@@ -158,53 +143,88 @@ class UIScene extends Phaser.Scene {
         }
 
         this.dialogueIndex++;
-        if(this.dialogueIndex < this.dialogue.script.length) {
-            this.setText(this.dialogue.script[this.dialogueIndex][0] + ' : ' + this.dialogue.script[this.dialogueIndex][1]);
+        if(this.dialogueIndex < this.currentScript.length) {
+            this.setText(this.currentScript[this.dialogueIndex][0] + ' : ' + this.currentScript[this.dialogueIndex][1]);
             return;
         }
 
-        this.dialogueIndex = 0;
-        this.input.keyboard.off('keydown_SPACE', this.progressConvo, this);
-        this.setText(this.dialogue.options.toString());
-        this.input.keyboard.on('keydown', this.makeChoice, this);
-    }
-
-    makeChoice(key) {
-        let optionsCount = this.dialogue.options.length;
-        let endGame = this.dialogue.endGameOption.toString();
-        switch(key.key){
-            case endGame:
-                this.hideDialogue();
-                this.showStoryText(this.dialogue.endGameStory);
-                break;
-            case "1":
-                this.hideDialogue();
-                break;
-            case "2":
-                if(optionsCount > 1) {
-                    this.hideDialogue();
-                }
-                break;
-            case "3":
-                if(optionsCount > 2) {
-                    this.hideDialogue();
-                }
-                break;
-            case "4":
-                if(optionsCount > 3) {
-                    this.hideDialogue();
-                }
-                break;
-            case "5":
-                if(optionsCount > 4) {
-                    this.hideDialogue();
-                }
-                break;
+        if(!this.hasPlayedEndGame) {
+            this.input.keyboard.off('keydown_SPACE', this.progressConvo, this);
+            //show options
+            this.setText(this.dialogue.options.toString());
+            this.input.keyboard.on('keydown', this.makeChoice, this);
+        } else {
+            this.showEndGame();
         }
     }
 
-    hideDialogue() {
+    makeChoice(key) {
+        let keyAsInt = parseInt(key.key, 10);
+
+        // ignore naff inputs
+        if(isNaN(keyAsInt)) {
+            return;
+        }
+        let optionsCount = this.dialogue.options.length;
+        if(keyAsInt > optionsCount) {
+            return;
+        }
+        
+        // a legit decision has been made
         this.input.keyboard.off('keydown', this.makeChoice, this);
+        this.hideDialogue();
+        
+        // check for endGame
+        let endGame = this.dialogue.endGameOption;
+        if(keyAsInt == endGame) {
+            this.showEndGame();
+        }
+    }
+
+    showEndGame(){
+        if((this.dialogue.endGameScript != undefined) && !this.hasPlayedEndGame) {
+            console.log('Starting end game script');
+            this.currentScript = this.dialogue.endGameScript;
+            this.hasPlayedEndGame = true;
+            this.showDialogue();
+            return;
+        }
+        this.hideDialogue();
+        this.input.keyboard.off('keydown_SPACE', this.progressConvo, this);
+        this.currentTextBox = this.introText;
+        this.setText(this.dialogue.endGameStory + '\n\nPress any key to start again');
+        this.intro.setVisible(true);
+        this.introText.setVisible(true);
+        this.intro.setAlpha(0);
+        this.introText.setAlpha(0);
+        this.tweens.add({
+            targets: [this.intro, this.introText],
+            alpha: 1,
+            ease: 'Power1',
+            duration: 2000
+        });
+        
+        this.music.stop();
+        switch(this.storyline){
+            case 'magister':
+                this.music = this.sound.add('magister-end');
+                break;
+            case 'landlord':
+                this.music = this.sound.add('landlord-end');
+                break;
+            case 'accountant':
+                this.music = this.sound.add('accountant-end');
+                break;
+            case 'kim':
+                this.music = this.sound.add('kim-end');
+                break;
+        }
+        this.music.play();
+        this.scene.pause('GameScene');
+        this.input.keyboard.on('keydown', this.restartGame, this);
+    }
+
+    hideDialogue() {
         this.dlg.setVisible(false);
         this.dlgText.setVisible(false);
         this.scene.resume('GameScene');
@@ -226,6 +246,8 @@ class UIScene extends Phaser.Scene {
             this.currentTextBox.setText(this.currentTextToShow);
             return;
         }
+        this.input.keyboard.off('keydown', this.restartGame, this);
+        this.music.stop();
         this.scene.restart();
         this.game.scene.restart();
     }

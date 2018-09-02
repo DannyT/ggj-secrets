@@ -15,7 +15,15 @@
                 [2, "....maybe another day...."]
             ],
             "endGameOption" : 1,
-            "endGameStory" : "You have decided to tell Magister about your secret, he is a wise man after all and he's been your mentor for ages....you know you can trust him\n\nMagister and you go to the cave to try and dig out the gold....\n\nunfortunately certain people change very quickly when they see too much gold all at once......at the sight of gold, Magister realizes that he wants it for himself, he wants to become the best alchemist in the world, create the elixir of life and rule the world until the 18th century, when Antoine Lavoisier eventually demostrated that alchemy is rubbish.....\n\nas it is the Alchemist stabs you and leave you in the cave, no one is gonna find you there.....he steals the gold and runs away....."
+            "endGameScript" : [
+                ["", "You have decided to tell Magister about your secret..."],
+                ["","he is a wise man after all and he's been your mentor for ages..."],
+                ["","you know you can trust him..."],
+                ["","..."],
+                ["","..."],
+                ["","..."]
+            ],
+            "endGameStory" : "\n\nMagister and you go to the cave to try and dig out the gold....\n\nunfortunately certain people change very quickly when they see too much gold all at once......at the sight of gold, Magister realizes that he wants it for himself, he wants to become the best alchemist in the world, create the elixir of life and rule the world until the 18th century, when Antoine Lavoisier eventually demostrated that alchemy is rubbish.....\n\nas it is the Alchemist stabs you and leave you in the cave, no one is gonna find you there.....he steals the gold and runs away....."
         },
         {
             "id" : "landlord",
@@ -65,7 +73,14 @@
                 [3, "ADVERTISING: francescopirrone.co.uk can compose bespoke music for cheap!!!"]
             ],
             "endGameOption" : 1,
-            "endGameStory" : "You decided to share your secret with Kim, they are willing to help you only if you agree to get married as soon as possible....\n\n...\n\n...\n\nfair enough, you have to do what you have to do in the end......\n\nyou and Kim dig out all the gold, spend half for the marriage, put the rest in the bank and pay 33% taxes on it, the remainder is still enough to finance your research, on a smaller scale but you can't have your gold tax free can you?"
+            "endGameScript" : [
+                ["", "You decided to share your secret with Kim..."],
+                ["","they are willing to help you only if you agree to get married as soon as possible...."],
+                ["","..."],
+                ["","..."],
+                ["","fair enough, you have to do what you have to do in the end..."]
+            ],
+            "endGameStory" : "You and Kim dig out all the gold, spend half for the marriage, put the rest in the bank and pay 33% taxes on it, the remainder is still enough to finance your research, on a smaller scale but you can't have your gold tax free can you?"
         }
     ]
 }
