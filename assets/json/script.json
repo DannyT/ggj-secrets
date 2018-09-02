@@ -11,8 +11,8 @@
                 ["Stefano", "Oh, I see....your intentions are noble and you are a very good person."]
             ],
             "options" : [
-                [1, "tell Magister about the secret"],
-                [2, "....maybe another day...."]
+                [1, "tell Magister about the secret..."],
+                [2, "maybe later...."]
             ],
             "endGameOption" : 1,
             "endGameScript" : [
@@ -47,7 +47,8 @@
                 ["Stefano", "Hello Sir, is it possible to check how I have done this quarter, please?"],
                 ["Accountant", "Sure thing, Stefano, that's no trouble......let me see...."],
                 ["Accountant", "...shuffle, shuffle, shuffle..."],
-                ["Accountant", "Here we are: you are doing 0K at the minute.....your weekend job is providing a stable income but you maybe spent too much on alchemy books and equipment. You would need someone to invest on your research, if you want to take it to the next level.....it probably needs an external \"boost\", if you see what I mean? Well....unless you can find a gold mine instead......AHAHAHAH"]
+                ["Accountant", "Here we are: um, you have zero money at the minute.....your weekend job is providing a stable income but you maybe spent too much on alchemy books and equipment. You would need someone to invest on your research, if you want to take it to the next level.....it probably needs an external \"boost\", if you see what I mean? Well...."],
+                ["Accountant", "unless you can find a gold mine instead......AHAHAHAH!"]
             ],
             "options" : [
                 [1, "reveal secret to the Accountant"],

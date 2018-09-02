@@ -103,7 +103,7 @@ class UIScene extends Phaser.Scene {
 
         // intro music
         this.music = this.sound.add('intro');
-        this.music.play();
+        this.music.play('',{ loop:true });
 
         //  Grab a reference to the Game Scene
         this.game = this.scene.get('GameScene');
