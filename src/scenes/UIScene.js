@@ -10,15 +10,23 @@ class UIScene extends Phaser.Scene {
         let gameWidth = this.sys.game.config.width;
         let gameHeight = this.sys.game.config.height;
         
-        // Intro dialogue
-        let boxWidth = gameWidth * 0.6;
-        let boxHeight = gameHeight * 0.90;
-        let xOffset = gameWidth/2-boxWidth/2;
-        let yOffset = gameHeight/2-boxHeight/2;
+        // modal screen
+        this.graphics = this.add.graphics();
+        this.graphics.fillStyle(0x000000, 0.8);
+        this.graphics.fillRect(0, 0, gameWidth, gameHeight);
+        this.graphics.setVisible(false);
 
-        this.intro = this.add.nineslice(
-            xOffset, yOffset,   // this is the starting x/y location
-            boxWidth, boxHeight,   // the width and height of your object
+        // Intro dialogue
+        this.boxConfig = {
+            boxWidth : gameWidth * 0.6,
+            boxHeight : gameHeight * 0.90,
+            xOffset : gameWidth/2-(gameWidth * 0.6)/2,
+            yOffset : gameHeight/2-(gameHeight * 0.90)/2
+        }
+
+        this.introBox = this.add.nineslice(
+            this.boxConfig.xOffset, this.boxConfig.yOffset,   // this is the starting x/y location
+            this.boxConfig.boxWidth, this.boxConfig.boxHeight,   // the width and height of your object
             {
                 key:'atlas',
                 frame: 'ui/panel_beige.png'
@@ -26,13 +34,26 @@ class UIScene extends Phaser.Scene {
             10,         // the width and height to offset for a corner slice
             10          // (optional) pixels to offset when computing the safe usage area
         );
-        this.intro.setInteractive();
+
+        this.introBoxDark = this.add.nineslice(
+            this.boxConfig.xOffset, this.boxConfig.yOffset,   // this is the starting x/y location
+            this.boxConfig.boxWidth, this.boxConfig.boxHeight,   // the width and height of your object
+            {
+                key:'atlas',
+                frame: 'ui/panel_blue.png'
+            },
+            10,         // the width and height to offset for a corner slice
+            10          // (optional) pixels to offset when computing the safe usage area
+        ).setVisible(false);
+
+        this.introBox.setInteractive();
+        
         
         // Intro text
         this.script = this.cache.json.get('script');
-        var dlgRect = this.intro.getUsableBounds();
+        var dlgRect = this.introBox.getUsableBounds();
         this.introText = this.make.text({
-            x: dlgRect.x,
+            x: dlgRect.x +10,
             y: dlgRect.y,
             text: '',
             style: {
@@ -43,15 +64,18 @@ class UIScene extends Phaser.Scene {
         });
 
         // dialogue box
-        boxWidth = gameWidth * 0.95;
-        boxHeight = 180;
-        xOffset = gameWidth/2-boxWidth/2;
+        let dialogBoxConfig = {
+            boxWidth : gameWidth * 0.95,
+            boxHeight : 180,
+            xOffset : gameWidth/2-(gameWidth * 0.95)/2,
+            frame : 'ui/panel_beige.png'
+        }
         this.dlg = this.add.nineslice(
-            xOffset, gameHeight-boxHeight,   // this is the starting x/y location
-            boxWidth, boxHeight-20,   // the width and height of your object
+            dialogBoxConfig.xOffset, gameHeight-dialogBoxConfig.boxHeight-20,   // this is the starting x/y location
+            dialogBoxConfig.boxWidth, dialogBoxConfig.boxHeight,   // the width and height of your object
             {
                 key:'atlas',
-                frame: 'ui/panel_beige.png'
+                frame: dialogBoxConfig.frame
             },
             10,         // the width and height to offset for a corner slice
             10          // (optional) pixels to offset when computing the safe usage area
@@ -60,13 +84,13 @@ class UIScene extends Phaser.Scene {
         // text
         dlgRect = this.dlg.getUsableBounds();
         this.dlgText = this.make.text({
-            x: dlgRect.x,
+            x: dlgRect.x +10,
             y: dlgRect.y,
             text: 'chat here',
             style: {
                 font: '25px "Courier New"',
                 fill: 'black',
-                wordWrap: { width: dlgRect.width }
+                wordWrap: { width: dlgRect.width * 0.9 }
             },
             visible:false
         });
@@ -93,7 +117,7 @@ class UIScene extends Phaser.Scene {
     }
 
     hideIntro(){
-        if(this.intro.visible) {
+        if(this.introBox.visible) {
             if(this.currentTextBox.text.length < this.currentTextToShow.length) {
                 this.currentTextBox.setText(this.currentTextToShow);
                 return;
@@ -102,7 +126,7 @@ class UIScene extends Phaser.Scene {
             this.input.keyboard.off('keydown', this.hideIntro, this);
             this.input.off('pointerup', this.hideIntro, this);
 
-            this.intro.setVisible(false);
+            this.introBox.setVisible(false);
             this.introText.setVisible(false);
             this.music.stop();
             this.music = this.sound.add('village');
@@ -200,13 +224,14 @@ class UIScene extends Phaser.Scene {
         this.hideDialogue();
         this.input.keyboard.off('keydown_SPACE', this.progressConvo, this);
         this.currentTextBox = this.introText;
-        this.setText(this.dialogue.endGameStory + '\n\nPress any key to start again');
-        this.intro.setVisible(true);
+        this.setText(this.dialogue.endGameStory + '\n\nTHE END\n\nAny key to restart and try a different companion!');
+        this.introBox.setVisible(true);
         this.introText.setVisible(true);
-        this.intro.setAlpha(0);
+        this.introBox.setAlpha(0);
         this.introText.setAlpha(0);
+        this.introBoxDark.setAlpha(0);
         this.tweens.add({
-            targets: [this.intro, this.introText],
+            targets: [this.introBox, this.introText, this.introBoxDark],
             alpha: 1,
             ease: 'Power1',
             duration: 2000
@@ -216,6 +241,8 @@ class UIScene extends Phaser.Scene {
         switch(this.storyline){
             case 'magister':
                 this.music = this.sound.add('magister-end');
+                this.graphics.setVisible(true);
+                this.introBoxDark.setVisible(true);
                 break;
             case 'landlord':
                 this.music = this.sound.add('landlord-end');
@@ -228,6 +255,8 @@ class UIScene extends Phaser.Scene {
                 break;
             case 'beggar':
                 this.music = this.sound.add('beggar-end');
+                this.graphics.setVisible(true);
+                this.introBoxDark.setVisible(true);
                 break;
         }
         this.music.play();

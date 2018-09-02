@@ -2060,6 +2060,31 @@
 					}
 				},
 				{
+					"filename": "ui/modalbg.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 10,
+						"h": 10
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 10,
+						"h": 10
+					},
+					"frame": {
+						"x": 90,
+						"y": 731,
+						"w": 10,
+						"h": 10
+					},
+					"anchor": {
+						"x": 0,
+						"y": 0
+					}
+				},
+				{
 					"filename": "ui/iconCheck_bronze.png",
 					"rotated": false,
 					"trimmed": false,
@@ -2215,6 +2240,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:c17a26922df8d17a6f1cacecb2d81b33:f110b451fe94d402af2edc2305462d4f:cbce6b53f0f49e0bf15173c25c41f876$"
+		"smartupdate": "$TexturePacker:SmartUpdate:1c885847f8cb5b17e404175463173b6a:1330a6d65fd76a8cd655f6a553860f00:cbce6b53f0f49e0bf15173c25c41f876$"
 	}
 }
